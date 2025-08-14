@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import ChakraProvider from "./ChakraProvider";
 import QueryProvider from "./QueryProvider";
+import {FavoritesProvider} from "../hooks/useFavorites";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<QueryProvider>
-					<ChakraProvider>{children}</ChakraProvider>
+					<FavoritesProvider>
+						<ChakraProvider>{children}</ChakraProvider>
+					</FavoritesProvider>
 				</QueryProvider>
 			</body>
 		</html>

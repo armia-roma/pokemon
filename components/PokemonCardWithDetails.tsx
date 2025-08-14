@@ -1,6 +1,7 @@
 import {usePokemonDetails} from "../hooks/usePokemonDetails";
 import PokemonCard from "./PokemonCard";
 import PokemonCardLoader from "./PokemonCardLoader";
+import {useFavorites} from "../hooks/useFavorites";
 export default function PokemonCardWithDetails({
 	pokemon,
 }: {
@@ -9,6 +10,7 @@ export default function PokemonCardWithDetails({
 	const {data: details, isLoading: detailsLoading} = usePokemonDetails(
 		pokemon.url
 	);
+	const {favorites, toggleFavorite, isFavorite} = useFavorites();
 
 	if (detailsLoading) {
 		return <PokemonCardLoader />;
@@ -21,8 +23,8 @@ export default function PokemonCardWithDetails({
 	return (
 		<PokemonCard
 			pokemon={details}
-			toggleFavorite={(name: string) => {}}
-			isFavorite={(name: string) => false}
+			toggleFavorite={toggleFavorite}
+			isFavorite={isFavorite}
 		/>
 	);
 }
