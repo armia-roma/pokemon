@@ -2,11 +2,14 @@ import {Pokemon} from "../libs/types";
 import {Card, Button, Badge} from "@chakra-ui/react";
 import {Heart} from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
 interface PokemonCardProps {
 	pokemon: Pokemon;
 	toggleFavorite: (name: string) => void;
 	isFavorite: (name: string) => boolean;
 }
+
 function PokemonCard({pokemon, toggleFavorite, isFavorite}: PokemonCardProps) {
 	return (
 		<Card.Root
@@ -40,17 +43,18 @@ function PokemonCard({pokemon, toggleFavorite, isFavorite}: PokemonCardProps) {
 			<Card.Body>
 				<Link href={`/pokemon/${pokemon.id}`}>
 					<div className="cursor-pointer">
-						<div className="aspect-square bg-muted rounded-lg mb-3 flex items-center justify-center">
+						<div className="aspect-square bg-muted rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
 							{pokemon.sprites?.other?.["official-artwork"]
 								?.front_default ? (
-								<img
+								<Image
 									src={
 										pokemon.sprites.other[
 											"official-artwork"
 										].front_default || "/placeholder.svg"
 									}
 									alt={pokemon.name}
-									className="w-full h-full object-contain"
+									fill
+									className="object-contain"
 								/>
 							) : (
 								<div className="text-muted-foreground">
