@@ -1,15 +1,12 @@
 import { Box, Skeleton } from "@chakra-ui/react";
+import PokemonCardLoader from "./PokemonCardLoader";
 
-function PokemonListSkeleton() {
+function PokemonListSkeleton({itemsPerPage = 12}: {itemsPerPage?: number}) {
 	return 	(
 		<div>
-			<div 
-				className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-				{Array.from({length: 8}).map((_, index) => (
-					<Box key={index} className="rounded-lg border">
-						{/* Image skeleton */}
-						<Skeleton height="150px" borderRadius="md" />
-					</Box>
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+				{Array.from({length: itemsPerPage}).map((_, i) => (
+					<PokemonCardLoader key={i} />
 				))}
 			</div>
 	

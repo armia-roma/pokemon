@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { PokemonList } from "@/components/PokemonList"
 import type { SearchParams } from "../libs/types"
+import PokemonListSkeleton from "@/components/PokemonListSkeleton"
 
 
 interface HomePageProps {
@@ -8,7 +9,6 @@ interface HomePageProps {
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
-  const params = await searchParams
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -17,7 +17,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         <p className="text-muted-foreground text-center">Discover and explore Pokemon from the PokéAPI</p>
       </header>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PokemonListSkeleton/>}>
         <PokemonList  />
       </Suspense>
     </div>

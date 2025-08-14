@@ -6,6 +6,7 @@ import PokemonCardLoader from "./PokemonCardLoader";
 import PokemonPagination from "./PokemonPagination";
 import {usePokemonList} from "../hooks/usePokemonList";
 import PokemonCardWithDetails from "./PokemonCardWithDetails";
+import PokemonListSkeleton from "./PokemonListSkeleton";
 const ITEMS_PER_PAGE = 12;
 
 
@@ -32,11 +33,7 @@ export function PokemonList() {
 
 	if (isLoading) {
 		return (
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-				{Array.from({length: ITEMS_PER_PAGE}).map((_, i) => (
-					<PokemonCardLoader key={i} />
-				))}
-			</div>
+			<PokemonListSkeleton itemsPerPage={ITEMS_PER_PAGE} />
 		);
 	}
 
