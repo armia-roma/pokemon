@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Poke Resource",
-	description: "Poke Resource",
+	title: "Pokemon",
+	description: "Pokemon Resource App ",
+	icons: {
+		icon: "/favicon.png", // or "/icon.png", "/icon.svg"
+	},
 };
 
 export default function RootLayout({
