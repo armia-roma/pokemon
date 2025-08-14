@@ -2,7 +2,6 @@
 import {useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import {Button} from "@chakra-ui/react";
-import PokemonCardLoader from "./PokemonCardLoader";
 import PokemonPagination from "./PokemonPagination";
 import {usePokemonList} from "../hooks/usePokemonList";
 import PokemonCardWithDetails from "./PokemonCardWithDetails";
