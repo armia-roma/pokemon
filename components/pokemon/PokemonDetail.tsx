@@ -9,6 +9,7 @@ import {PokemonSkeleton} from "./PokemonSkeleton";
 import {PokemonError} from "./PokemonError";
 import {PokemonImage} from "./PokemonImage";
 import {PokemonStats} from "./PokemonStats";
+import {useFavorites} from "@/hooks/useFavorites";
 
 interface Props {
 	id: string;
@@ -17,7 +18,7 @@ interface Props {
 export function PokemonDetail({id}: Props) {
 	const router = useRouter();
 	const {pokemon, loading, error} = usePokemonDetail(id);
-
+	const {toggleFavorite, isFavorite} = useFavorites();
 	if (loading) return <PokemonSkeleton />;
 	if (error || !pokemon)
 		return <PokemonError message={error || "Pokemon not found"} />;
@@ -31,9 +32,15 @@ export function PokemonDetail({id}: Props) {
 				</Button>
 				<Button
 					variant="ghost"
-					onClick={() => console.log("Favorite clicked")}
+					onClick={() => toggleFavorite(pokemon.name)}
 				>
-					<Heart className="h-4 w-4 mr-2 text-muted-foreground" />
+					<Heart
+						className={` ${
+							isFavorite(pokemon.name)
+								? "fill-red-500 text-red-500"
+								: "text-muted-foreground"
+						} h-4 w-4 mr-2`}
+					/>
 				</Button>
 			</div>
 
