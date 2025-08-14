@@ -1,4 +1,4 @@
-import { Box, Skeleton } from "@chakra-ui/react";
+import { Skeleton } from "@chakra-ui/react";
 import PokemonCardLoader from "./PokemonCardLoader";
 
 function PokemonListSkeleton({itemsPerPage = 12}: {itemsPerPage?: number}) {

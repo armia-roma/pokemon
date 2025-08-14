@@ -6,8 +6,8 @@ import PokemonPagination from "./PokemonPagination";
 import {usePokemonList} from "../hooks/usePokemonList";
 import PokemonCardWithDetails from "./PokemonCardWithDetails";
 import PokemonListSkeleton from "./PokemonListSkeleton";
+import {PokemonListItem} from "@/libs/types";
 const ITEMS_PER_PAGE = 12;
-
 
 export function PokemonList() {
 	const router = useRouter();
@@ -31,9 +31,7 @@ export function PokemonList() {
 	};
 
 	if (isLoading) {
-		return (
-			<PokemonListSkeleton itemsPerPage={ITEMS_PER_PAGE} />
-		);
+		return <PokemonListSkeleton itemsPerPage={ITEMS_PER_PAGE} />;
 	}
 
 	if (isError) {
@@ -63,7 +61,7 @@ export function PokemonList() {
 	return (
 		<div className="space-y-6">
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-				{data.results.map((p: any) => (
+				{data.results.map((p: PokemonListItem) => (
 					<PokemonCardWithDetails key={p.name} pokemon={p} />
 				))}
 			</div>

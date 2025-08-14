@@ -10,7 +10,7 @@ export default function PokemonCardWithDetails({
 	const {data: details, isLoading: detailsLoading} = usePokemonDetails(
 		pokemon.url
 	);
-	const {favorites, toggleFavorite, isFavorite} = useFavorites();
+	const {toggleFavorite, isFavorite} = useFavorites();
 
 	if (detailsLoading) {
 		return <PokemonCardLoader />;

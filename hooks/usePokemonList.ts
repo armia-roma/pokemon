@@ -1,4 +1,3 @@
-// hooks/usePokemonList.ts
 import { useQuery } from "@tanstack/react-query";
 
 const ITEMS_PER_PAGE = 12;
